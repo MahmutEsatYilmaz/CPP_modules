@@ -7,7 +7,7 @@ Form::Form() : name("Empty") , sign_status(false) , sign_grade(150) , sign_exec(
     std::cout << "Default constructor called" << std::endl;
 }
 Form::Form(const	std::string _name, const int	_sign_grade, const int	_sign_exec)
-: name(_name) , sign_grade(sign_status) , sign_exec(_sign_exec) , sign_status(false)
+: name(_name) , sign_status(false) , sign_grade(_sign_grade) , sign_exec(_sign_exec)
 {
     if(this->sign_exec > 150 || this->sign_grade > 150)
     {
@@ -21,7 +21,7 @@ Form::Form(const	std::string _name, const int	_sign_grade, const int	_sign_exec)
 }
 
 Form::Form(const Form &copy)
-: name(copy.name) , sign_grade(copy.sign_grade) , sign_exec(copy.sign_exec) , sign_status(copy.sign_status)
+: name(copy.name) , sign_status(copy.sign_status) , sign_grade(copy.sign_grade) , sign_exec(copy.sign_exec)
 {
     std::cout << "Copy constructor is called" << std::endl;
 }
@@ -78,6 +78,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 
 std::ostream &operator<<(std::ostream &out, const Form &obj)
 {
-    out << obj.getName() << ", Form sign grade" <<  obj.getSign_Grade()
-    << ", Form sign exec" << obj.getSign_exec() << ", Form sign status" << obj.getSign_Status() << std::endl;
+    out << obj.getName() << ", Form sign grade " <<  obj.getSign_Grade()
+    << ", Form sign exec " << obj.getSign_exec() << ", Form sign status " << obj.getSign_Status();
+    return out;
 }

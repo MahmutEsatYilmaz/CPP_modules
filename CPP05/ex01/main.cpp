@@ -1,16 +1,32 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat s1("Mahmut", 2);
+        Form f("Vacation Request", 50, 25);
+        Bureaucrat boss("Boss", 1);
+        Bureaucrat intern("Intern", 150);
 
-        std::cout << s1 << std::endl;
-        s1.incrementGrade();
-        std::cout << s1 << std::endl;
-        s1.incrementGrade();
-        std::cout << "!!!!!!!!!!" << std::endl;
+        std::cout << f << std::endl;
+
+        intern.signForm(f);
+        std::cout << f << std::endl;
+
+        boss.signForm(f);
+        std::cout << f << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    std::cout << "----------" << std::endl;
+
+    try
+    {
+        Form badGrade("Too High", 0, 50);
+        std::cout << badGrade << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -19,32 +35,8 @@ int main()
 
     try
     {
-        Bureaucrat s2("Esat", 149);
-
-        std::cout << s2 << std::endl;
-        s2.decrementGrade();
-        std::cout << s2 << std::endl;
-        s2.decrementGrade();
-        std::cout << "**********" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        Bureaucrat s3("yilmaz", 151);
-        std::cout << "----------" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-    try
-    {
-        Bureaucrat s4("fatih", 0);
-        std::cout << "==========" << std::endl;
+        Form badGrade("Too Low", 200, 50);
+        std::cout << badGrade << std::endl;
     }
     catch(const std::exception& e)
     {
